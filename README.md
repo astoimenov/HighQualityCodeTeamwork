@@ -1,5 +1,4 @@
 HighQualityCodeTeamwork
-=======================
 -----------------------
 Team Selenium HighQualityCode task - King Survival 1
 
