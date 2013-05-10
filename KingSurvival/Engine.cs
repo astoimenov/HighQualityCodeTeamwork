@@ -35,7 +35,7 @@ namespace KingSurvival
 
             while (this.state.IsKingWinner == null)
             {
-                this.userInterface.ListenForCommand();
+                this.userInterface.ListenForCommand(this.state.IsKingsTurn);
             }
         }
 
@@ -52,13 +52,10 @@ namespace KingSurvival
         {
             this.kingsCoordinates = new Vector(3, 7);
             this.AddFigure(new King('K'), this.kingsCoordinates);
-            this.AddFigure(new Pawn('A'), new Vector(1, 5));
-            this.AddFigure(new Pawn('B'), new Vector(2, 5));
-            this.AddFigure(new Pawn('C'), new Vector(3, 5));
-            this.AddFigure(new Pawn('D'), new Vector(4, 5));
-            this.AddFigure(new Pawn('E'), new Vector(5, 5));
-            this.AddFigure(new Pawn('F'), new Vector(6, 5));
-            this.AddFigure(new Pawn('G'), new Vector(0, 5));
+            this.AddFigure(new Pawn('A'), new Vector(0, 0));
+            this.AddFigure(new Pawn('B'), new Vector(2, 0));
+            this.AddFigure(new Pawn('C'), new Vector(4, 0));
+            this.AddFigure(new Pawn('D'), new Vector(6, 0));
         }
 
         private void AddFigure(Figure figure, Vector position)

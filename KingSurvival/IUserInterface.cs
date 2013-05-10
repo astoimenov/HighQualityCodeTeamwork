@@ -10,6 +10,6 @@ namespace KingSurvival
     {
         event CommandArrivedEventHandler CommandArrived;
 
-        void ListenForCommand();
+        void ListenForCommand(bool isKingsTurn);
     }
 }

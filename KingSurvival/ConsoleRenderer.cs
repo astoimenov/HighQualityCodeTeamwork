@@ -54,7 +54,7 @@ namespace KingSurvival
 
         public void RenderInvalidCommand()
         {
-            Console.WriteLine("Invalid Command");
+            Console.WriteLine("Illegal move!");
         }
 
         private char GetFirstSymbol(int row)

@@ -10,8 +10,17 @@ namespace KingSurvival
     {
         public event CommandArrivedEventHandler CommandArrived;
 
-        public void ListenForCommand()
+        public void ListenForCommand(bool isKingsTurn)
         {
+            if (isKingsTurn)
+            {
+                Console.Write("King's turn: ");
+            }
+            else
+            {
+                Console.Write("Pawn's turn: ");
+            }
+
             string command = Console.ReadLine();
             this.CommandArrived(this, new CommandArrivedArgs(command));
         }
