@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+
     public class CommandArrivedArgs : EventArgs
     {
-        public string Command { get; private set; }
-
         public CommandArrivedArgs(string command)
             : base()
         {
             this.Command = command;
         }
+
+        public string Command { get; private set; }
     }
 }

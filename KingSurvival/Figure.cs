@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+    using System.Collections.Generic;
+
     public abstract class Figure
     {
         private char name;
@@ -21,6 +18,7 @@ namespace KingSurvival
             {
                 return this.name;
             }
+
             private set
             {
                 if ((value >= 'a' && value <= 'z') ||
@@ -29,9 +27,9 @@ namespace KingSurvival
                     this.name = value;
                 }
                 else
-	            {
+                {
                     throw new ArgumentOutOfRangeException("The name of the figure must be an upper or lower latin letter (a-z or A-Z).");
-	            }
+                }
             }
         }
 

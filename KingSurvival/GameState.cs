@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+
     public struct GameState
     {
-        public Board Board { get; private set; }
-
-        public uint KingMovesCount { get; set; }
-
-        public bool IsKingsTurn { get; set; }
-
-        public bool? IsKingWinner { get; set; }
-
         public GameState(Board board, uint kingMovesCount, bool isKingsTurn, bool? isKingWinner)
             : this()
         {
@@ -29,5 +17,13 @@ namespace KingSurvival
             this.IsKingsTurn = isKingsTurn;
             this.IsKingWinner = isKingWinner;
         }
+
+        public Board Board { get; private set; }
+
+        public uint KingMovesCount { get; set; }
+
+        public bool IsKingsTurn { get; set; }
+
+        public bool? IsKingWinner { get; set; }
     }
 }

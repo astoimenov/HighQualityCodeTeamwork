@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Engine
     {
         public const bool KingAttacksToUp = true;
@@ -62,7 +58,7 @@ namespace KingSurvival
         {
             if (this.figures.ContainsKey(figure.Name))
             {
-                string message = String.Format("There is already a figure with name {0} on the board.", figure.Name);
+                string message = string.Format("There is already a figure with name {0} on the board.", figure.Name);
                 throw new DuplicationException<Figure>(figure, message);
             }
 
@@ -74,11 +70,11 @@ namespace KingSurvival
         {
             if (!this.figures.ContainsKey(name))
             {
-                throw new InvalidMovementException(String.Format("There is no figure with name {0} on the board.", name));
+                throw new InvalidMovementException(string.Format("There is no figure with name {0} on the board.", name));
             }
 
             Vector oldPosition = this.figures[name];
-            Figure figure = board[oldPosition.X, oldPosition.Y];
+            Figure figure = this.board[oldPosition.X, oldPosition.Y];
             bool isTheKing = this.kingsCoordinates.Equals(oldPosition);
 
             if (isTheKing != this.state.IsKingsTurn)
@@ -93,7 +89,7 @@ namespace KingSurvival
 
             try
             {
-                board.MoveFigure(oldPosition, newPosition);
+                this.board.MoveFigure(oldPosition, newPosition);
             }
             catch (InvalidPositionException e)
             {
@@ -139,9 +135,9 @@ namespace KingSurvival
             int newXValue = 0;
             int newYValue = 0;
 
-            switch (Char.ToUpper(command[1]))
+            switch (char.ToUpper(command[1]))
             {
-                case 'U' :
+                case 'U':
                     newYValue = currentPosition.Y - 1;
                     break;
                 case 'D':
@@ -152,7 +148,7 @@ namespace KingSurvival
                     return;
             }
 
-            switch (Char.ToUpper(command[2]))
+            switch (char.ToUpper(command[2]))
             {
                 case 'L':
                     newXValue = currentPosition.X - 1;
@@ -179,7 +175,7 @@ namespace KingSurvival
 
             if (this.state.IsKingWinner != null && this.GameOver != null)
             {
-                GameOver(this, new GameOverEventArgs(this.state));
+                this.GameOver(this, new GameOverEventArgs(this.state));
             }
         }
 
@@ -187,13 +183,13 @@ namespace KingSurvival
         {
             if (this.state.IsKingsTurn)
             {
-                if (!CanKingMove())
+                if (!this.CanKingMove())
                 {
                     this.state.IsKingWinner = false;
                     return true;
                 }
             }
-            else if(this.IsKingOnLastLine() || !this.CanOppositeFiguresMove())
+            else if (this.IsKingOnLastLine() || !this.CanOppositeFiguresMove())
             {
                 this.state.IsKingWinner = true;
                 return true;

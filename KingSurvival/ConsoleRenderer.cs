@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+    using System.Text;
+
     public class ConsoleRenderer : IRenderer
     {
         public const char WhiteSymbol = '+';
@@ -31,7 +28,7 @@ namespace KingSurvival
                         result.AppendFormat(" {0}", currentSymbol);
                     }
 
-                    currentSymbol = AlternateSymbol(currentSymbol);
+                    currentSymbol = this.AlternateSymbol(currentSymbol);
                 }
 
                 result.AppendLine();
@@ -41,7 +38,7 @@ namespace KingSurvival
             {
                 if (state.IsKingWinner.Value == true)
                 {
-                    result.AppendLine(String.Format("King wins in {0} turns.", state.KingMovesCount));
+                    result.AppendLine(string.Format("King wins in {0} turns.", state.KingMovesCount));
                 }
                 else
                 {
@@ -71,12 +68,15 @@ namespace KingSurvival
         {
             switch (symbol)
             {
-                case ConsoleRenderer.WhiteSymbol :
+                case ConsoleRenderer.WhiteSymbol:
                     return ConsoleRenderer.BlackSymbol;
-                case ConsoleRenderer.BlackSymbol :
+                case ConsoleRenderer.BlackSymbol:
                     return ConsoleRenderer.WhiteSymbol;
-                default :
-                    string message = String.Format("The symbol must be {0} or {1}.", ConsoleRenderer.WhiteSymbol, ConsoleRenderer.BlackSymbol);
+                default:
+                    string message = string.Format(
+                        "The symbol must be {0} or {1}.",
+                        ConsoleRenderer.WhiteSymbol,
+                        ConsoleRenderer.BlackSymbol);
                     throw new ArgumentOutOfRangeException(message);
             }
         }

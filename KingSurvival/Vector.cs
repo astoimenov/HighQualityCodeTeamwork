@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+
     public struct Vector
     {
-        public int X { get; private set; }
-
-        public int Y { get; private set; }
-
         public Vector(int x, int y)
             : this()
         {
             this.X = x;
             this.Y = y;
         }
+
+        public int X { get; private set; }
+
+        public int Y { get; private set; }
 
         public override bool Equals(object obj)
         {
@@ -36,8 +32,8 @@ namespace KingSurvival
         public override int GetHashCode()
         {
             int hash = 71; // Should be prime number
-            hash = 37 * hash + this.X;
-            hash = 37 * hash + this.Y;
+            hash = (37 * hash) + this.X;
+            hash = (37 * hash) + this.Y;
             return hash;
         }
     }

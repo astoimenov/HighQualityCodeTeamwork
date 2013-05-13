@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KingSurvival
+﻿namespace KingSurvival
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Pawn : Figure
     {
         public Pawn(char name)
@@ -23,6 +20,24 @@ namespace KingSurvival
             {
                 return this.CanMoveAttackingDown(from, to);
             }
+        }
+
+        public override List<Vector> GetPossibleNewPositions(Vector initialPosition, bool attacksDownToUp = true)
+        {
+            List<Vector> possiblePositions = new List<Vector>();
+
+            if (attacksDownToUp)
+            {
+                possiblePositions.Add(new Vector(initialPosition.X + 1, initialPosition.Y - 1));
+                possiblePositions.Add(new Vector(initialPosition.X - 1, initialPosition.Y - 1));
+            }
+            else
+            {
+                possiblePositions.Add(new Vector(initialPosition.X + 1, initialPosition.Y + 1));
+                possiblePositions.Add(new Vector(initialPosition.X - 1, initialPosition.Y + 1));
+            }
+
+            return possiblePositions;
         }
 
         private bool CanMoveAttackingUp(Vector from, Vector to)
@@ -45,24 +60,6 @@ namespace KingSurvival
             }
 
             return false;
-        }
-
-        public override List<Vector> GetPossibleNewPositions(Vector initialPosition, bool attacksDownToUp = true)
-        {
-            List<Vector> possiblePositions = new List<Vector>();
-
-            if (attacksDownToUp)
-            {
-                possiblePositions.Add(new Vector(initialPosition.X + 1, initialPosition.Y - 1));
-                possiblePositions.Add(new Vector(initialPosition.X - 1, initialPosition.Y - 1));
-            }
-            else
-            {
-                possiblePositions.Add(new Vector(initialPosition.X + 1, initialPosition.Y + 1));
-                possiblePositions.Add(new Vector(initialPosition.X - 1, initialPosition.Y + 1));
-            }
-
-            return possiblePositions;
         }
     }
 }
