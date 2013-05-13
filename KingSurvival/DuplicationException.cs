@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KingSurvival
 {
-    class DuplicationException<T> : Exception
+    public class DuplicationException<T> : Exception
     {
         public T Duplicate { get; private set; }
 

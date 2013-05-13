@@ -242,7 +242,7 @@ namespace KingSurvival
         private bool IsKingOnLastLine()
         {
             if ((Engine.KingAttacksToUp && this.kingsCoordinates.Y == 0) ||
-                    (!Engine.KingAttacksToUp && (this.kingsCoordinates.Y == this.board.Height - 1)))
+                (!Engine.KingAttacksToUp && this.kingsCoordinates.Y == this.board.Height - 1))
             {
                 return true;
             }

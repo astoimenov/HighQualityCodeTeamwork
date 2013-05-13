@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingSurvival", "KingSurvival\KingSurvival.csproj", "{705970DF-4D68-44AF-A41E-0FA9CC1FC62C}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "KingSurvivalDocumentation", "KingSurvivalDocumentation\KingSurvivalDocumentation.shfbproj", "{7104133A-3AAA-4DEC-BDE1-7EA94B6ED553}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{705970DF-4D68-44AF-A41E-0FA9CC1FC62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{705970DF-4D68-44AF-A41E-0FA9CC1FC62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{705970DF-4D68-44AF-A41E-0FA9CC1FC62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7104133A-3AAA-4DEC-BDE1-7EA94B6ED553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7104133A-3AAA-4DEC-BDE1-7EA94B6ED553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7104133A-3AAA-4DEC-BDE1-7EA94B6ED553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7104133A-3AAA-4DEC-BDE1-7EA94B6ED553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
