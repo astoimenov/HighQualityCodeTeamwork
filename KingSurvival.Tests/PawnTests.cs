@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KingSurvival;
+using System.Collections.Generic;
 
 [TestClass]
 public class PawnTests
