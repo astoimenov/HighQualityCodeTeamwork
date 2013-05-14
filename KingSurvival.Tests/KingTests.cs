@@ -148,4 +148,94 @@ public class KingTests
 
         Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void TestGetPossibleNewPositionsValidPositions()
+    {
+        Vector initialPosition = new Vector(4, 6);
+        
+        King king = new King('K');
+        List<Vector> actual = king.GetPossibleNewPositions(initialPosition, true);
+        List<Vector> expected = new List<Vector>() 
+        { 
+            new Vector(5, 7),
+            new Vector(5, 5),
+            new Vector(3, 7),
+            new Vector(3, 5)
+        };
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestGetPossibleNewPositionsValidPositionsLimitRight()
+    {
+        Vector initialPosition = new Vector(7, 3);
+
+        King king = new King('K');
+        List<Vector> actual = king.GetPossibleNewPositions(initialPosition, true);
+        List<Vector> expected = new List<Vector>() 
+        { 
+            new Vector(8, 4),
+            new Vector(8, 2),
+            new Vector(6, 4),
+            new Vector(6, 2)
+        };
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestGetPossibleNewPositionsValidPositionsLimitLeft()
+    {
+        Vector initialPosition = new Vector(0, 2);
+
+        King king = new King('K');
+        List<Vector> actual = king.GetPossibleNewPositions(initialPosition, true);
+        List<Vector> expected = new List<Vector>() 
+        { 
+            new Vector(1, 3),
+            new Vector(1, 1),
+            new Vector(-1, 3),
+            new Vector(-1, 1)
+        };
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestGetPossibleNewPositionsValidPositionsBottomRightEdge()
+    {
+        Vector initialPosition = new Vector(7, 7);
+
+        King king = new King('K');
+        List<Vector> actual = king.GetPossibleNewPositions(initialPosition, true);
+        List<Vector> expected = new List<Vector>() 
+        { 
+            new Vector(8, 8),
+            new Vector(8, 6),
+            new Vector(6, 8),
+            new Vector(6, 6)
+        };
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestGetPossibleNewPositionsValidPositionsTopRightEdge()
+    {
+        Vector initialPosition = new Vector(0, 0);
+
+        King king = new King('K');
+        List<Vector> actual = king.GetPossibleNewPositions(initialPosition, true);
+        List<Vector> expected = new List<Vector>() 
+        { 
+            new Vector(1, 1),
+            new Vector(1, -1),
+            new Vector(-1, 1),
+            new Vector(-1, -1)
+        };
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
 }
