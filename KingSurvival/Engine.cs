@@ -1,29 +1,71 @@
-﻿namespace KingSurvival
+﻿// <copyright file="Engine.cs" company="Team Selenium">
+// Team Selenium 2013 All Rights Reserved
+// </copyright>
+// <author>Team Selenium</author>
+
+namespace KingSurvival
 {
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Represents the main logic of the game. Responsible for keeping the rules and makes decisions what
+    /// should happen after every step of the game. It is a kind of facade design pattern.
+    /// </summary>
     public class Engine
     {
+        /// <summary>
+        /// True if the king attacks to the up side of the board.
+        /// </summary>
         public const bool KingAttacksToUp = true;
 
+        /// <summary>
+        /// The board in which the current game is played.
+        /// </summary>
         private Board board;
+
+        /// <summary>
+        /// Responsible for rendering the game UI to the user. 
+        /// </summary>
         private IRenderer renderer;
+
+        /// <summary>
+        /// Responsible for collecting the user commands and passing them to the engine of the game.
+        /// </summary>
         private IUserInterface userInterface;
+
+        /// <summary>
+        /// Represents the current state of the game (composed by the most important information of the game).
+        /// </summary>
         private GameState state;
 
-        // Figures
+        /// <summary>
+        /// The current coordinates of the <see cref="King"/> figure on the board.
+        /// </summary>
         private Vector kingsCoordinates;
+
+        /// <summary>
+        /// Collection of all the figures on the board.
+        /// </summary>
         private Dictionary<char, Vector> figures;
 
-        public event GameOverEventHandler GameOver;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Engine"/> class.
+        /// </summary>
         public Engine()
         {
             this.Initialize();
             this.AddAllFigures();
         }
 
+        /// <summary>
+        /// Triggered when the game is finished no matter who is the winner.
+        /// </summary>
+        public event GameOverEventHandler GameOver;
+
+        /// <summary>
+        /// Start the game (the game loop).
+        /// </summary>
         public void Start()
         {
             this.renderer.Render(this.state);
@@ -35,6 +77,9 @@
             }
         }
 
+        /// <summary>
+        /// Initializes all the needed components of the game (board, renderer etc.).
+        /// </summary>
         private void Initialize()
         {
             this.board = new Board(8, 8);
@@ -44,6 +89,9 @@
             this.figures = new Dictionary<char, Vector>();
         }
 
+        /// <summary>
+        /// Adds all the needed figures on the board including the <see cref="King"/> figure.
+        /// </summary>
         private void AddAllFigures()
         {
             this.kingsCoordinates = new Vector(3, 7);
@@ -54,6 +102,13 @@
             this.AddFigure(new Pawn('D'), new Vector(6, 0));
         }
 
+        /// <summary>
+        /// Adds a single figure to a given position on the board.
+        /// </summary>
+        /// <param name="figure">The figure to be added.</param>
+        /// <param name="position">The position which to be added the figure on.</param>
+        /// <exception cref="DuplicationException">If on the board exists a figure with the same name as <paramref name="figure"/>'s name.</exception>
+        /// <exception cref="InvalidPositionException">If the <paramref name="position"/> doesn't exists or is already occupied.</exception>
         private void AddFigure(Figure figure, Vector position)
         {
             if (this.figures.ContainsKey(figure.Name))
@@ -62,10 +117,21 @@
                 throw new DuplicationException<Figure>(figure, message);
             }
 
+            if (!this.board.IsEmptyPosition(position))
+            {
+                throw new InvalidPositionException(position, "The position doesn't exists or is already occupied");
+            }
+
             this.board.AddFigure(figure, position);
             this.figures.Add(figure.Name, position);
         }
 
+        /// <summary>
+        /// Moves an already existing figure to a new position on the board.
+        /// </summary>
+        /// <param name="name">The name of the figure to be moved.</param>
+        /// <param name="newPosition">The new position of the figure.</param>
+        /// <exception cref="InvalidMovementException">The figure can't be moved because the rules of the game doesn't allow it.</exception>
         private void MoveFigure(char name, Vector newPosition)
         {
             if (!this.figures.ContainsKey(name))
@@ -108,6 +174,12 @@
             this.CheckForGameOver();
         }
 
+        /// <summary>
+        /// An event handler which implements the logic after a new command has arrived from the user.
+        /// Triggers the <see cref="Engine.GameOver"/> event if the game is over.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="eventArguments">Information about the event containing the command arrived.</param>
         private void CommandArrivedHandler(object sender, CommandArrivedArgs eventArguments)
         {
             if (eventArguments.Command == null)
@@ -179,6 +251,10 @@
             }
         }
 
+        /// <summary>
+        /// Checks if the game should be finished in the current moment.
+        /// </summary>
+        /// <returns>True if the game should be finished, false - if not.</returns>
         private bool CheckForGameOver()
         {
             if (this.state.IsKingsTurn)
@@ -198,6 +274,10 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if the king figure has a valid moves.
+        /// </summary>
+        /// <returns>True if the king can move, false - if not.</returns>
         private bool CanKingMove()
         {
             Figure king = this.board[this.kingsCoordinates.X, this.kingsCoordinates.Y];
@@ -213,6 +293,10 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if the opposite (of the King's team) team' figures has a valid moves.
+        /// </summary>
+        /// <returns>True - if the figures can move, false - otherwise.</returns>
         private bool CanOppositeFiguresMove()
         {
             foreach (var figure in this.figures)
@@ -235,6 +319,10 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if the kings figure has reached the last line.
+        /// </summary>
+        /// <returns>True if the king is on the last line, false - otherwise.</returns>
         private bool IsKingOnLastLine()
         {
             if ((Engine.KingAttacksToUp && this.kingsCoordinates.Y == 0) ||
