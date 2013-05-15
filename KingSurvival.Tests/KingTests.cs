@@ -14,9 +14,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -27,9 +26,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -40,9 +38,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]
@@ -53,9 +50,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -66,9 +62,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -79,9 +74,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -92,9 +86,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -105,9 +98,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]
@@ -118,9 +110,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]
@@ -131,9 +122,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]
@@ -144,9 +134,8 @@ public class KingTests
 
         King king = new King('K');
         bool actual = king.CanMove(fromPosition, toPosition);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]

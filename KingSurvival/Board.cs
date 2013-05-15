@@ -85,7 +85,24 @@
 
         public bool IsEmptyPosition(Vector position)
         {
-            bool result = this.Exists(position) && this.IsEmpty(position);
+            bool result = (this.Exists(position) && this.IsEmpty(position));
+            return result;
+        }
+
+        public char[,] GetContent()
+        {
+            char[,] result = new char[this.Height, this.Width];
+            for (int col = 0; col < this.Width; col++)
+            {
+                for (int row = 0; row < this.Height; row++)
+                {
+                    if (this[col, row] != null)
+                    {
+                        result[row, col] = this.board[col, row].Name;
+                    }
+                }
+            }
+
             return result;
         }
 

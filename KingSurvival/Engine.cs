@@ -148,7 +148,12 @@ namespace KingSurvival
                 throw new InvalidMovementException("The figure can't be moved. It is not it's turn.");
             }
 
-            if (!figure.CanMove(oldPosition, newPosition))
+            if (isTheKing && !figure.CanMove(oldPosition, newPosition))
+            {
+                throw new InvalidMovementException("The figure can't be moved. It can't perform this type of movement.");
+            }
+
+            if (!isTheKing && !figure.CanMove(oldPosition, newPosition, false))
             {
                 throw new InvalidMovementException("The figure can't be moved. It can't perform this type of movement.");
             }

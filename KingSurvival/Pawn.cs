@@ -43,7 +43,7 @@
         private bool CanMoveAttackingUp(Vector from, Vector to)
         {
             if ((from.X + 1 == to.X || from.X - 1 == to.X) &&
-                    from.Y + 1 == to.Y)
+                    from.Y - 1 == to.Y)
             {
                 return true;
             }
@@ -54,7 +54,7 @@
         private bool CanMoveAttackingDown(Vector from, Vector to)
         {
             if ((from.X + 1 == to.X || from.X - 1 == to.X) &&
-                    from.Y - 1 == to.Y)
+                    from.Y + 1 == to.Y)
             {
                 return true;
             }

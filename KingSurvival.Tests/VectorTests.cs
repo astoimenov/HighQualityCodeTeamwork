@@ -12,9 +12,8 @@ public class VactorTests
         Vector secondVector = new Vector(0, 0);
 
         bool actual = firstVector.Equals(secondVector);
-        bool expected = true;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -24,8 +23,7 @@ public class VactorTests
         Vector secondVector = new Vector(6, 6);
 
         bool actual = firstVector.Equals(secondVector);
-        bool expected = false;
 
-        Assert.AreEqual(expected, actual);
+        Assert.IsFalse(actual);
     }
 }
