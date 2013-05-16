@@ -33,8 +33,20 @@
             }
         }
 
+        /// <summary>
+        /// Determines if the Figure can move to a given new position
+        /// </summary>
+        /// <param name="from">Current position of the Figure</param>
+        /// <param name="to">The new position which the Figure will move to</param>
+        /// <param name="attacksDownToUp"></param>
+        /// <returns>Returns true if the Figure can move to the given new position. Otherwise, returns false.</returns>
         public abstract bool CanMove(Vector from, Vector to, bool attacksDownToUp = true);
 
+        /// <summary>
+        /// Determines which are the possible positions of a Figure object for moving up and down
+        /// </summary>
+        /// <param name="initialPosition">Current position of the Figure</param>
+        /// <returns>Returns a list of possible positions of the Figure object for moving up and down</returns>
         public abstract List<Vector> GetPossibleNewPositions(Vector initialPosition, bool attacksDownToUp = true);
     }
 }
