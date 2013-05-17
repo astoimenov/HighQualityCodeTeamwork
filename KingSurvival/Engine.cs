@@ -53,7 +53,29 @@ namespace KingSurvival
         /// Initializes a new instance of the <see cref="Engine"/> class.
         /// </summary>
         public Engine()
+            : this(new ConsoleRenderer(), new ConsoleUserInterface())
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Engine"/> class.
+        /// </summary>
+        /// <param name="renderer">The renderer instance responsible for rendering the game UI.</param>
+        /// <param name="userInterface">The IUserInterface instance responsible for the communication with the user.</param>
+        public Engine(IRenderer renderer, IUserInterface userInterface)
+        {
+            if (renderer == null)
+            {
+                throw new ArgumentNullException("The renderer must not be null.");
+            }
+
+            if (userInterface == null)
+            {
+                throw new ArgumentNullException("The IUserInterface instance must not be null.");
+            }
+
+            this.renderer = renderer;
+            this.userInterface = userInterface;
             this.Initialize();
             this.AddAllFigures();
         }
