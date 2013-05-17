@@ -21,7 +21,7 @@ namespace KingSurvival
         public int Y { get; private set; }
 
         /// <summary>
-        /// Overriden Object.Equals(Object) method. Determines whether the specified Vector 
+        /// Overritten Object.Equals(Object) method. Determines whether the specified Vector 
         /// object is equal to the current Vector object. Two Vector objects are equal if 
         /// they have the same values for their Vector.X and Vector.Y properties.
         /// </summary>

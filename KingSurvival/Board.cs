@@ -8,10 +8,18 @@ namespace KingSurvival
     using System;
     using System.Diagnostics;
 
+    /// <summary>
+    /// Represents the board of the game. Responsible for adding and moving figures on the board.
+    /// </summary>
     public class Board
     {
         private Figure[,] board;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Board"/> class.
+        /// </summary>
+        /// <param name="width">The width of the board</param>
+        /// <param name="height">The height of the board.</param>
         public Board(int width, int height)
         {
             if (width <= 0 || height <= 0)
@@ -22,6 +30,9 @@ namespace KingSurvival
             this.board = new Figure[width, height];
         }
 
+        /// <summary>
+        /// Gets the width of the board.
+        /// </summary>
         public int Width
         {
             get
@@ -30,6 +41,9 @@ namespace KingSurvival
             }
         }
 
+        /// <summary>
+        /// Gets the height of the board.
+        /// </summary>
         public int Height
         {
             get
@@ -38,6 +52,12 @@ namespace KingSurvival
             }
         }
 
+        /// <summary>
+        /// Gets the figure on a given position.
+        /// </summary>
+        /// <param name="x">The X coordinate of the position.</param>
+        /// <param name="y">The Y coordinate of the position.</param>
+        /// <returns>The figure object on the given position, or null if there is no figure on this position.</returns>
         public Figure this[int x, int y]
         {
             get
@@ -46,6 +66,11 @@ namespace KingSurvival
             }
         }
 
+        /// <summary>
+        /// Adds a figure to the board.
+        /// </summary>
+        /// <param name="figure">The figure to be added.</param>
+        /// <param name="position">The position on which the figure to be added.</param>
         public void AddFigure(Figure figure, Vector position)
         {
             if (!this.Exists(position))
@@ -61,6 +86,11 @@ namespace KingSurvival
             this.board[position.X, position.Y] = figure;
         }
 
+        /// <summary>
+        /// Moves a figure from one position to other.
+        /// </summary>
+        /// <param name="oldPosition">The position from which to move a figure.</param>
+        /// <param name="newPosition">The new position of the figure.</param>
         public void MoveFigure(Vector oldPosition, Vector newPosition)
         {
             if (!this.Exists(oldPosition))
@@ -88,12 +118,21 @@ namespace KingSurvival
             this.board[oldPosition.X, oldPosition.Y] = null;
         }
 
+        /// <summary>
+        /// Checks if a given position exists and is emppty.
+        /// </summary>
+        /// <param name="position">The position to be checked.</param>
+        /// <returns>True - if the position exists and is empty, or false - otherwise.</returns>
         public bool IsEmptyPosition(Vector position)
         {
             bool result = this.Exists(position) && this.IsEmpty(position);
             return result;
         }
 
+        /// <summary>
+        /// Gets the content of the board as a char matrix.
+        /// </summary>
+        /// <returns>The char matrix representation of the field.</returns>
         public char[,] GetContent()
         {
             char[,] result = new char[this.Height, this.Width];

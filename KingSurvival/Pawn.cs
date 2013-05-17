@@ -24,7 +24,7 @@ namespace KingSurvival
         /// <param name="from">Current position of the Pawn</param>
         /// <param name="to">The new position which the Pawn will move to</param>
         /// <param name="attacksDownToUp">True if the pawn attacks to the up direction.</param>
-        /// <returns>Returns true if the Panw can move to the given new position. Otherwise, returns false.</returns>
+        /// <returns>Returns true if the Pawn can move to the given new position. Otherwise, returns false.</returns>
         public override bool CanMove(Vector from, Vector to, bool attacksDownToUp = true)
         {
             if (attacksDownToUp)
