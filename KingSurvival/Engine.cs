@@ -81,6 +81,17 @@ namespace KingSurvival
         }
 
         /// <summary>
+        /// Gets the current game state.
+        /// </summary>
+        public GameState State
+        {
+            get
+            {
+                return this.state;
+            }
+        }
+
+        /// <summary>
         /// Triggered when the game is finished no matter who is the winner.
         /// </summary>
         public event GameOverEventHandler GameOver;

@@ -20,7 +20,7 @@ namespace KingSurvival
         /// </summary>
         /// <param name="from">Current position of the King</param>
         /// <param name="to">The new position which the King will move to</param>
-        /// <param name="attacksDownToUp"></param>
+        /// <param name="attacksDownToUp">True if the king is attacking to up direction and false - if attacking to down direction.</param>
         /// <returns>Returns true if the King can move to the given new position. Otherwise, returns false.</returns>
         public override bool CanMove(Vector from, Vector to, bool attacksDownToUp = true)
         {

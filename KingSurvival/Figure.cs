@@ -38,7 +38,7 @@
         /// </summary>
         /// <param name="from">Current position of the Figure</param>
         /// <param name="to">The new position which the Figure will move to</param>
-        /// <param name="attacksDownToUp"></param>
+        /// <param name="attacksDownToUp">True if the figure is attacking to up direction and false - if attacking to down direction.</param>
         /// <returns>Returns true if the Figure can move to the given new position. Otherwise, returns false.</returns>
         public abstract bool CanMove(Vector from, Vector to, bool attacksDownToUp = true);
 

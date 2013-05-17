@@ -17,6 +17,7 @@ namespace KingSurvival
         {
             Console.Clear();
             StringBuilder result = new StringBuilder();
+            
             // Renders the board
             for (int i = 0; i < state.Board.Height; i++)
             {

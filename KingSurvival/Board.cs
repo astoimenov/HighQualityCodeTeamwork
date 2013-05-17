@@ -90,7 +90,7 @@ namespace KingSurvival
 
         public bool IsEmptyPosition(Vector position)
         {
-            bool result = (this.Exists(position) && this.IsEmpty(position));
+            bool result = this.Exists(position) && this.IsEmpty(position);
             return result;
         }
 
@@ -124,7 +124,7 @@ namespace KingSurvival
 
         private bool IsEmpty(Vector position)
         {
-            Debug.Assert(this.Exists(position));
+            Debug.Assert(this.Exists(position), "The position doesn't exists.");
 
             if (this.board[position.X, position.Y] == null)
             {
